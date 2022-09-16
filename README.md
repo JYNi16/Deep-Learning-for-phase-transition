@@ -1,2 +1,5 @@
-# Unsupervised-Learning-for-Phys-
-Unsupervised learning for discovering phase transition in various spin systems. 
+# Unsupervised learning for magnetic phase transition
+Unsupervised learning methods for discovering phase transition in various spin syatems. 
+1. PCA method for 2D Ising model
+2. AutoEncoder Neural network for 2D Iisng model.
+...
