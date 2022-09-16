@@ -8,7 +8,7 @@ Quick start:
    
    Datasets contain three parts： 20_L, 40_L and 80_L, in which "L" represent the size of model.    
    
-   For each parts, we generate the datas in the range of temperature from 1 to 3.0. 
+   For each part, we generate the datas in the range of temperature from 1 to 3.0. 
    
    For each temperature point, we generate 100 datas.
 
