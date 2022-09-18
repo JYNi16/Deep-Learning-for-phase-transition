@@ -6,21 +6,22 @@ from datasets import MCdata
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-path = "E:/deeplearning/Unsupervised learning for Phys/VAE for 2DIsing model"
+modelpath = "E:/deeplearning/Unsupervised learning for Phys/VAE for 2DIsing model"
+datapath = "E:/deeplearning/Unsupervised learning for Phys/AutoEncoder for 2DIsing model"
 
 torch.set_grad_enabled(False)
 model = VAE(45, 1)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model.to(device)
-model.load_state_dict(torch.load(path + "/save_model/vae_45_L_91.pth"))
-dataset = MCdata(path + "/45_L")
+model.load_state_dict(torch.load(modelpath + "/save_model/vae_45_L_91.pth"))
+dataset = MCdata(datapath + "/45_L_val")
 dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
 
 def inference():
     tem, latent = [], []
     for spin_m, t in tqdm(dataloader):
         spin_m = torch.reshape(spin_m, (-1, 45*45))
-        _, _, _, out = model(spin_m)
+        _, out, _, _ = model(spin_m)
         tem.append(t.numpy()[0])
         latent.append(out.numpy()[0][0])
 
