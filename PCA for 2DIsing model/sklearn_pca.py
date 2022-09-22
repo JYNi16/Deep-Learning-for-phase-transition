@@ -50,7 +50,7 @@ def pca_spin(data1, data2, data3, path1, path2, path3):
     v3 = pca.components_
 
     for i in range(len(data_list1)):
-        color_z.append(float((data_list3[i].split("\\")[-1]).split("_")[0]) / 10)
+        color_z.append(float((data_list3[i].split("\\")[-1]).split("_")[0]))
 
     m1, m2, m3 = [], [], []
     for i in range(len(data_list1)):
@@ -103,12 +103,8 @@ def plot(path1, path2, path3):
 
 
 if __name__=="__main__":
-    root_path_1 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/20_L"
-    root_path_2 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/40_L"
-    root_path_3 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/80_L"
+    root_path_1 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/20_L_s"
+    root_path_2 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/40_L_s"
+    root_path_3 = "E:/deeplearning/Unsupervised learning for Phys//PCA for 2DIsing model/80_L_s"
 
-    data1, _ = load_data(root_path_1)
-    data2, _ = load_data(root_path_2)
-    data3, _ = load_data(root_path_3)
-
-    pca_spin(data1, data2, data3, root_path_1, root_path_2, root_path_3)
+    plot(root_path_1, root_path_2, root_path_3)
