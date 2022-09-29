@@ -12,10 +12,14 @@ python train.py
    
    For each temperature point, we generate 500 datas.
 
-2. python train.py.
+2. model.file. 
+   
+   Neural Netword based VAEs.
+
+3. python train.py.
 
    training file. 
 
-3. python infer.py 
+4. python infer.py 
 
    Inferece using saved model.  
