@@ -8,13 +8,13 @@ class VAE(nn.Module):
         self.latent_size = latent_size
         self.Encoder = nn.Sequential(
             nn.Linear(self.infetures, 625),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(625, 256),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(256, 64),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(64, self.latent_size*2),
             nn.Tanh()
@@ -22,13 +22,13 @@ class VAE(nn.Module):
 
         self.Decoder = nn.Sequential(
             nn.Linear(self.latent_size, 64),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(64, 256),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(256, 625),
-            nn.LeakyReLU(),
+            nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(625, self.infetures),
             nn.Tanh()
@@ -66,7 +66,7 @@ class VAE(nn.Module):
 if __name__=="__main__":
     model = VAE(45, 1)
     spin_data = torch.ones(1, 45*45)
-    mu_prime, mu, log_var = model(spin_data)
+    mu_prime, mu, log_var, z = model(spin_data)
     print("mu_prime is:", mu_prime.shape, "mu is:", mu.shape, "log_var is:", log_var.shape)
     loss = model.loss(spin_data, mu_prime, mu, log_var)
 

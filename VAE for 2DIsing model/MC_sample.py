@@ -5,12 +5,13 @@ from numba import jit
 import time
 import os, glob
 import random
+import config as cf
 
 sweeps = 500
 K = 1
 J = 1
 H = 0
-lattice = 45
+lattice = cf.L
 relax = 100
 sample_step = 50
 
@@ -114,7 +115,7 @@ def multi_run():
     start = time.time()
 
     ing_argv = []
-    for T in np.linspace(0.8, 3.6, 280):
+    for T in np.linspace(1.2, 3.6, 140):
         ing_argv.append(T)
     with Pool(4) as p:
         p.map(main_loop, ing_argv)
